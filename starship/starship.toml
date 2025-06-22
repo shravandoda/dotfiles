@@ -1,0 +1,124 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$conda\
+$lua\
+$nodejs\
+$golang\
+$haskell\
+$rust\
+$ruby\
+$package\
+$aws\
+$docker_context\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'onedark'
+
+[directory]
+style = 'bold fg:dark_blue'
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[git_branch]
+style = 'fg:green'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+[git_status]
+style = 'fg:green'
+modified = '[  \(${count}\) ](fg:orange)'  # Shows a orange dot if there are modified files
+staged = '[ 󰸟 \(${count}\) ](fg:green)'    # Shows a red dot if there are staged files
+deleted = '[ ✘(${count}) ](fg:red)'   # Shows a red cross if files are deleted
+untracked = '[ +\(${count}\) ](fg:light_green)' # Shows a red question mark for untracked files
+ahead = '[ ⇡\(${count}\) ](fg:cyan)' # Shows commits ahead
+behind = '[ ⇣\(${count}\) ](fg:cyan)' # Shows commits behind
+diverged = '[ ⇕\(${count}\) ](fg:cyan)' # Shows diverged commits
+conflicted = '[ ⚠ ](fg:red)'  # Shows a red warning for merge conflicts
+renamed = '[ » ](fg:red)'     # Shows a red arrow for renamed files
+format = '([$all_status$ahead_behind]($style) )'
+
+
+[fill]
+symbol = ' '
+
+[python]
+style = "dark_blue"
+symbol = "  "
+format = "[${symbol} (${version}) ]($style)"
+
+[conda]
+symbol = " "
+ignore_base = false
+
+
+[lua]
+symbol = ' '
+
+[nodejs]
+style = 'blue'
+symbol = ' '
+
+[golang]
+style = 'blue'
+symbol = ' '
+
+[haskell]
+style = 'blue'
+symbol = ' '
+
+[rust]
+style = 'orange'
+symbol = ' '
+
+[ruby]
+style = 'blue'
+symbol = ' '
+
+[package]
+symbol = '󰏗 '
+
+[aws]
+symbol = ' '
+style = 'yellow'
+format = '[$symbol($profile )(\[$duration\] )]($style)'
+
+[docker_context]
+symbol = ' '
+style = 'fg:#06969A'
+format = '[$symbol]($style) $path'
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+detect_extensions = ['Dockerfile']
+
+[jobs]
+symbol = ' '
+style = 'red'
+number_threshold = 1
+format = '[$symbol]($style)'
+
+[cmd_duration]
+min_time = 100
+style = 'fg:gray'
+format = '[$duration]($style)'
+
+[palettes.onedark]
+dark_blue='#61afef'
+blue='#56b6c2'
+red='#e06c75'
+green='#98c379'
+purple='#c678dd'
+cyan='#56b6c2'
+orange='#ffa500'
+light_green="#a2b06d"
+yellow='#e5c07b'
+gray='#828997'
+white ='#abb2bf'
+black='#2c323c'
