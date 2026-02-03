@@ -1,0 +1,12 @@
+# Appearance
+theme = Gruvbox Light Hard
+font-family = Commit Mono
+font-size = 15
+adjust-cell-height = 30%
+window-width = 120
+window-height = 32
+
+# Preserves local features, but fixes remote servers
+scrollback-limit = 536870912
+shell-integration-features = ssh-terminfo
+keybind = shift+enter=text:\x1b\r

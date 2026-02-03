@@ -65,20 +65,20 @@ return {
   --- VSCode Theme (Trying to feel at home)
   --------------------------------------------------------------------
 
-  {
-    'Mofiqul/vscode.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('vscode').setup {
-        italic_comments = true,
-        italic_inlay_hints = true,
-        underline_links = true,
-        terminal_colors = true,
-      }
-      vim.cmd 'colorscheme vscode'
-    end,
-  },
+  -- {
+  --   'Mofiqul/vscode.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('vscode').setup {
+  --       italic_comments = true,
+  --       italic_inlay_hints = true,
+  --       underline_links = true,
+  --       terminal_colors = true,
+  --     }
+  --     vim.cmd 'colorscheme vscode'
+  --   end,
+  -- },
 
   --------------------------------------------------------------------
   --- Catppuccin Theme
@@ -127,7 +127,6 @@ return {
   --     vim.cmd.colorscheme 'catppuccin'
   --   end,
   -- },
-
   --
   --
   --------------------------------------------------------------------
@@ -169,30 +168,66 @@ return {
   --     vim.cmd.colorscheme 'gruvbox-material'
   --   end,
   -- },
+
+  --------------------------------------------------------------------
+  --- Gruvbox Material Lua Port
+  --------------------------------------------------------------------
+
+  -- {
+  --   'ellisonleao/gruvbox.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     require('gruvbox').setup {
+  --       terminal_colors = true,
+  --       undercurl = true,
+  --       underline = true,
+  --       bold = true,
+  --       italic = {
+  --         strings = true,
+  --         emphasis = true,
+  --         comments = true,
+  --         operators = false,
+  --         folds = true,
+  --       },
+  --       strikethrough = true,
+  --       invert_selection = false,
+  --       invert_signs = false,
+  --       invert_tabline = false,
+  --       inverse = true,
+  --       contrast = 'hard',
+  --       palette_overrides = {},
+  --       overrides = {},
+  --       dim_inactive = false,
+  --       transparent_mode = false,
+  --     }
   --
+  --     vim.o.background = 'light'
+  --     vim.cmd 'colorscheme gruvbox'
+  --   end,
+  -- },
+
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup {
+        variant = 'dawn', -- auto, main, moon, or dawn
+        dim_inactive_windows = false,
+        extend_background_behind_borders = true,
+        styles = {
+          bold = true,
+          italic = true,
+          transparency = false,
+        },
+      }
+
+      vim.cmd 'colorscheme rose-pine-dawn'
+    end,
+  },
+
   --------------------------------------------------------------------
   -- Highlight todo, notes, etc in comments
   --------------------------------------------------------------------
-
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  ---------------------------------------------------------------------
-  --- Center the text in the middle of the screen
-  ---------------------------------------------------------------------
-  {
-    {
-      'shortcuts/no-neck-pain.nvim',
-
-      config = function()
-        require('no-neck-pain').setup {
-          width = 180,
-          autocmds = {
-            enableOnVimEnter = true,
-          },
-        }
-      end,
-
-      vim.keymap.set('n', '<leader>np', '<cmd>NoNeckPain<CR>', { desc = 'Toggle [N]o Neck [P]ain' }),
-    },
-  },
 }
