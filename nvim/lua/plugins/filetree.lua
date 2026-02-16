@@ -21,12 +21,12 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-    lazy = true,
+    lazy = false,
     keys = {
       { '-', '<cmd>Oil --float<CR>', desc = 'Open parent directory (Oil)' },
     },
     opts = {
-      default_file_explorer = false,
+      default_file_explorer = true,
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
       view_options = {
@@ -70,8 +70,8 @@ return {
       vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵 ', texthl = 'DiagnosticSignHint' })
 
       require('neo-tree').setup {
-        close_if_last_window = true,
-        popup_border_style = 'rounded',
+        close_if_last_window = false,
+        popup_border_style = 'none',
         enable_git_status = true,
         enable_diagnostics = true,
         sort_case_insensitive = true,
@@ -80,21 +80,21 @@ return {
             indent_size = 2,
             padding = 1,
             with_markers = true,
-            indent_marker = '│',
-            last_indent_marker = '└',
-            highlight = 'NeoTreeIndentMarker',
-            with_expanders = true,
-            expander_collapsed = '',
-            expander_expanded = '',
-            expander_highlight = 'NeoTreeExpander',
-          },
-          icon = {
-            folder_closed = '',
-            folder_open = '',
-            folder_empty = '',
-            default = '',
-            highlight = 'NeoTreeFileIcon',
-          },
+          indent_marker = '│',
+          last_indent_marker = '└',
+          highlight = 'NeoTreeIndentMarker',
+          with_expanders = true,
+          expander_collapsed = '',
+          expander_expanded = '',
+          expander_highlight = 'NeoTreeExpander',
+        },
+        icon = {
+          folder_closed = '',
+          folder_open = '',
+          folder_empty = '',
+          default = '󰈚',
+          highlight = 'NeoTreeFileIcon',
+        },
           modified = {
             symbol = '●',
             highlight = 'NeoTreeModified',
@@ -104,19 +104,19 @@ return {
             use_git_status_colors = true,
             highlight = 'NeoTreeFileName',
           },
-          git_status = {
-            symbols = {
-              added = '✚',
-              modified = '',
-              deleted = '✖',
-              renamed = '󰁕',
-              untracked = '',
-              ignored = '',
-              unstaged = '󰄱',
-              staged = '',
-              conflict = '',
-            },
+        git_status = {
+          symbols = {
+            added = '✚',
+            modified = '',
+            deleted = '✖',
+            renamed = '󰁕',
+            untracked = '',
+            ignored = '',
+            unstaged = '󰄱',
+            staged = '',
+            conflict = '',
           },
+        },
         },
         window = {
           position = 'left',
@@ -172,7 +172,7 @@ return {
             leave_dirs_open = true,
           },
           group_empty_dirs = false,
-          hijack_netrw_behavior = 'open_current',
+          hijack_netrw_behavior = 'disabled',
           use_libuv_file_watcher = true,
           window = {
             mappings = {
@@ -209,6 +209,16 @@ return {
           },
         },
       }
+
+      local neo_tree_quit_group = vim.api.nvim_create_augroup('NeoTreeQuitOnLastWindow', { clear = true })
+      vim.api.nvim_create_autocmd('BufEnter', {
+        group = neo_tree_quit_group,
+        callback = function()
+          if vim.bo.filetype == 'neo-tree' and vim.fn.winnr '$' == 1 then
+            vim.cmd 'quit'
+          end
+        end,
+      })
     end,
   },
   {

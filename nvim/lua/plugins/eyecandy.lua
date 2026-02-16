@@ -151,23 +151,24 @@ return {
   -------------------------------------------------------------------
   --- Gruvbox Material Theme
   -------------------------------------------------------------------
-  -- {
-  --   'sainnhe/gruvbox-material',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.g.gruvbox_material_background = 'medium'
-  --     vim.g.gruvbox_material_foreground = 'mix'
-  --     vim.g.gruvbox_material_transparent_background = 0
-  --     vim.g.gruvbox_material_better_performance = 1
-  --     vim.g.gruvbox_material_enable_bold = 1
-  --     vim.g.gruvbox_material_enable_italic = 1
-  --     vim.g.gruvbox_material_cursor = 'red'
-  --     vim.g.gruvbox_material_ui_contrast = 'high'
-  --
-  --     vim.cmd.colorscheme 'gruvbox-material'
-  --   end,
-  -- },
+  {
+    'sainnhe/gruvbox-material',
+    enabled = false,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_material_background = 'medium'
+      vim.g.gruvbox_material_foreground = 'mix'
+      vim.g.gruvbox_material_transparent_background = 0
+      vim.g.gruvbox_material_better_performance = 1
+      vim.g.gruvbox_material_enable_bold = 1
+      vim.g.gruvbox_material_enable_italic = 1
+      vim.g.gruvbox_material_cursor = 'red'
+      vim.g.gruvbox_material_ui_contrast = 'high'
+
+      vim.cmd.colorscheme 'gruvbox-material'
+    end,
+  },
 
   --------------------------------------------------------------------
   --- Gruvbox Material Lua Port
@@ -175,8 +176,10 @@ return {
 
   -- {
   --   'ellisonleao/gruvbox.nvim',
+  --   lazy = false,
   --   priority = 1000,
   --   config = function()
+  --     vim.o.background = 'light'
   --     require('gruvbox').setup {
   --       terminal_colors = true,
   --       undercurl = true,
@@ -193,22 +196,51 @@ return {
   --       invert_selection = false,
   --       invert_signs = false,
   --       invert_tabline = false,
-  --       inverse = true,
+  --       inverse = false,
   --       contrast = 'hard',
   --       palette_overrides = {},
-  --       overrides = {},
+  --       overrides = {
+  --         WinSeparator = { link = 'GruvboxBg2' },
+  --         VertSplit = { link = 'GruvboxBg2' },
+  --         FloatBorder = { link = 'GruvboxBg2' },
+  --         NormalFloat = { link = 'Normal' },
+  --         TelescopeBorder = { link = 'GruvboxBg2' },
+  --         TelescopePromptBorder = { link = 'GruvboxBg2' },
+  --         TelescopeResultsBorder = { link = 'GruvboxBg2' },
+  --         TelescopePreviewBorder = { link = 'GruvboxBg2' },
+  --       },
   --       dim_inactive = false,
   --       transparent_mode = false,
   --     }
-  --
-  --     vim.o.background = 'light'
   --     vim.cmd 'colorscheme gruvbox'
   --   end,
   -- },
 
   {
+    'projekt0n/github-nvim-theme',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('github-theme').setup {
+        options = {
+          styles = {
+            comments = 'italic',
+            keywords = 'bold',
+          },
+        },
+      }
+
+      vim.o.background = 'light'
+      vim.cmd 'colorscheme github_light_default'
+    end,
+  },
+
+  {
     'rose-pine/neovim',
     name = 'rose-pine',
+    enabled = false,
+    lazy = false,
+    priority = 1000,
     config = function()
       require('rose-pine').setup {
         variant = 'dawn', -- auto, main, moon, or dawn
@@ -229,5 +261,4 @@ return {
   -- Highlight todo, notes, etc in comments
   --------------------------------------------------------------------
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
 }

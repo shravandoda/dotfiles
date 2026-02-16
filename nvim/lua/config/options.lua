@@ -20,6 +20,8 @@ vim.g.maplocalleader = ' '
 -- Nerd font
 vim.g.have_nerd_font = true
 
+vim.o.termguicolors = true
+
 -- Set Tab spaces
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -81,4 +83,4 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- Window Borders
-vim.o.winborder = 'rounded'
+vim.o.winborder = 'none'

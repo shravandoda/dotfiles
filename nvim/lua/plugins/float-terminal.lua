@@ -49,7 +49,7 @@ local function create_floating_window(opts)
     row = row_pos,
     col = col_pos,
     style = 'minimal',
-    border = 'rounded',
+    border = 'none',
   })
 
   return buf_id, win_id
