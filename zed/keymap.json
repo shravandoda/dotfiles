@@ -1,0 +1,35 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      ", s f": "file_finder::Toggle",
+      ", s g": "pane::DeploySearch",
+      ", s w": "buffer_search::Deploy",
+      ", s d": "diagnostics::Deploy",
+      ", s k": "zed::OpenKeymap",
+      ", A": "outline_panel::ToggleFocus",
+      ", a i": "agent::ToggleFocus",
+      ", e": "project_panel::ToggleFocus",
+      ", shift-e": "pane::RevealInProjectPanel",
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      ", d": ["pane::CloseActiveItem", { "close_pinned": false }],
+      ", t t": "terminal_panel::Toggle",
+      ", g e": "git_panel::ToggleFocus",
+      ", g g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Dock && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  }
+]
